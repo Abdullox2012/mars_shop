@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+ <h1>Teacher profile</h1>
+
+ <h3>{{ data.username}}</h3>
+
+{% for student in students%}
+
+<ul>
+  <li>
+    {{sydent.first_name}} {{student.last_name}} - {{student.coins}}
+    <form method="post" class="d-inline">
+      {% csrf_token %}
+      <input type="hidden" name="coin">
+      <a href="{% url 'add-coins' student.id}"><button type="submit" class="btn btn-warnind">Add</button>
+      </a>
+    </form>
+  </li>
+</ul>
+
+{% endfor %}
+
+{% endblock %}
